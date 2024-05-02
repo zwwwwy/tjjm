@@ -5,6 +5,9 @@ from mtb.tools import prefer_settings
 prefer_settings()
 
 df = pd.read_csv('../data/爬取的知网论文数据.csv')
+# df = pd.read_csv('../data/知网论文/知网论文_人工智能+医疗.csv')
+df = pd.read_csv('../data/知网论文/知网_人工智能+医疗(北核).csv')
+
 #|%%--%%| <GvKDuX9dop|VbKBkm8FMJ>
 
 result = df['发表时间'].str[:4].value_counts()
