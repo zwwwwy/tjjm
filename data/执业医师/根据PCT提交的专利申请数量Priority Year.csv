@@ -1,0 +1,69 @@
+,根据PCT提交的专利申请数量：Priority Year
+区域,中国
+次国家,
+频率,"年, 年终12月"
+单位,数量
+数据来源,Organisation for Economic Co-operation and Development
+状态,继续
+数列ID,477666547
+SR码,SR159588847
+贸易代码,
+助记符,
+函数说明,
+首次观测日期,1981
+最后观测日期,2020
+最后更新时间,31/03/2023
+数列备注,"<div> Notes to the September 2023 edition:</div><div> In the March 2023 edition, the OECD suppressed and put on hold the publication of several R&D indicators for China because of concerns about the coherence of expenditure and personnel data. Chinese officials have since confirmed errors in the business R&D data submitted to OECD in February 2023 and revised figures subsequently. While the revised breakdowns between manufacturing and other sectors is now deemed coherent, few details are available about the structure of China's R&D in the service sector which has been significantly increasing in size. China provided additional explanations on the growth rates in the higher education and government sectors in 2019, as well as the discrepancies between personnel and expenditure trends in both sectors. Total estimates of GERD and its institutional sector components (BERD, HERD, GOVERD) for 2019 to 2021 have not been modified by China and have been published as reported to OECD. The OECD continues to encourage China and other non member economies to engage in comprehensive reporting of R&D statistics and metadata.</div><div> ---Structural notes:The national breakdown by source of funds does not fully match with the classification defined in the Frascati Manual. The R&D financed by the government, business enterprises, and by the rest of the world can be retrieved but part of the expenditure has no specific source of financing, i.e. self-raised funding (in particular for independent research institutions), the funds from the higher education sector and left-over government grants from previous years.The government and higher education sectors cover all fields of NSE and SSH while the business enterprise sector only covers the fields of NSE. There are only few organisations in the private non-profit sector, hence no R&D survey has been carried out in this sector and the data are not available.From 2009, researcher data are collected according to the Frascati Manual definition of researcher.</div><div> Beforehand, this was only the case for independent research institutions, while for the other sectors data were collected according to the UNESCO concept of 'scientist and engineer'.In 2009, the survey coverage in the business and the government sectors has been expanded.Before 2000, all of the personnel data and 95% of the expenditure data in the business enterprise sector are for large and medium-sized enterprises only. Since 2000 however, the survey covers almost all industries and all enterprises above a certain threshold. In 2000 and 2004, a census of all enterprises was held, while in the intermediate years data for small enterprises are estimated.Due to the reform of the S&T system some government institutions have become enterprises, and their R&D data have been reflected in the Business Enterprise sector since 2000.</div>"
+建议,
+平均,11138.546587499997
+方差,356763563.70674384
+标准差,18888.18582359735
+偏度,1.8464004548492605
+峰度,2.4049901257981285
+变异系数,1.6957495913151024
+最小,0
+最大,68731.634
+中位数,944.8259
+总和 SUM,445541.86350000004
+减 SUBTRACT,-68731.634
+参照期间,40
+1981,0
+1982,0
+1983,1
+1984,1.3333
+1985,0
+1986,0.7917
+1987,2.6905
+1988,4.6333
+1989,1.5238
+1990,4.9641
+1991,4.4635
+1992,7.2619
+1993,68.5667
+1994,86.5962
+1995,100.8036
+1996,127.919
+1997,170.9591
+1998,263.3452
+1999,601.4992
+2000,1450.5836
+2001,773.8563
+2002,1115.7955
+2003,1486.1843
+2004,2066.5472
+2005,3527.7891
+2006,4804.6147
+2007,5986.1685
+2008,6386.5289
+2009,10168.4177
+2010,13430.898
+2011,17275.9208
+2012,19040.9969
+2013,22554.1293
+2014,25896.2592
+2015,33128.5827
+2016,42844.4517
+2017,49453.5337
+2018,52998.385
+2019,60972.2353
+2020,68731.634

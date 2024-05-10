@@ -1,0 +1,55 @@
+,研发人员：每百万人
+区域,中国
+次国家,
+频率,"年, 年终12月"
+单位,Ratio
+数据来源,World Bank
+状态,继续
+数列ID,274029302
+SR码,SR5272469
+贸易代码,
+助记符,
+函数说明,
+首次观测日期,1996
+最后观测日期,2021
+最后更新时间,19/12/2023
+数列备注,"The number of researchers engaged in Research &Development (R&D), expressed as per million. Researchers are professionals who conduct research and improve or develop concepts, theories, models techniques instrumentation, software of operational methods. R&D covers basic research, applied research, and experimental development.;UNESCO Institute for Statistics (UIS). UIS.Stat Bulk Data Download Service. Accessed November 27, 2023. https://apiportal.uis.unesco.org/bdds.;Weighted average;"
+建议,
+平均,947.7082989034619
+方差,132916.1741317485
+标准差,364.57670541567586
+偏度,0.22315708608636764
+峰度,-0.6695779130697024
+变异系数,0.3846929544011658
+最小,390.77093506
+最大,1687.0567627
+中位数,954.67630005
+总和 SUM,24640.41577149
+减 SUBTRACT,-1296.28582764
+参照期间,26
+1996,447.92810059
+1997,477.38095093
+1998,390.77093506
+1999,424.45339966
+2000,551.80725098
+2001,585.47454834
+2002,634.76434326
+2003,670.92150879
+2004,716.4776001
+2005,859.97613525
+2006,934.9307251
+2007,1080.5736084
+2008,1201.11877441
+2009,863.44299316
+2010,901.12597656
+2011,974.421875
+2012,1031.22363281
+2013,1081.96459961
+2014,1104.08312988
+2015,1164.94030762
+2016,1210.74108887
+2017,1237.74194336
+2018,1319.35595703
+2019,1485.81750488
+2020,1601.92211914
+2021,1687.0567627

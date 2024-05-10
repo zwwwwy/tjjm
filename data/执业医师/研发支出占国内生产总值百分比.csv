@@ -1,0 +1,55 @@
+,研发支出：占国内生产总值百分比
+区域,中国
+次国家,
+频率,"年, 年终12月"
+单位,%
+数据来源,World Bank
+状态,继续
+数列ID,263748402
+SR码,SR5271987
+贸易代码,
+助记符,
+函数说明,
+首次观测日期,1996
+最后观测日期,2021
+最后更新时间,19/12/2023
+数列备注,"Gross domestic expenditures on research and development (R&D), expressed as a percent of GDP. They include both capital and current expenditures in the four main sectors: Business enterprise, Government, Higher education and Private non-profit. R&D covers basic research, applied research, and experimental development.;UNESCO Institute for Statistics (UIS). UIS.Stat Bulk Data Download Service. Accessed November 27, 2023. https://apiportal.uis.unesco.org/bdds.;Weighted average;"
+建议,
+平均,1.5350150030769227
+方差,0.3440995002070742
+标准差,0.5865999490343263
+偏度,-0.1623609630106629
+峰度,-1.2645948567961702
+变异系数,0.38214606883873603
+最小,0.56323999
+最大,2.43260002
+中位数,1.55536002
+总和 SUM,39.910390080000006
+减 SUBTRACT,-1.8693600300000002
+参照期间,26
+1996,0.56323999
+1997,0.63872999
+1998,0.64688998
+1999,0.74962997
+2000,0.89315999
+2001,0.94033003
+2002,1.05786002
+2003,1.12037003
+2004,1.21498001
+2005,1.30791998
+2006,1.36854005
+2007,1.37369001
+2008,1.44591999
+2009,1.66480005
+2010,1.71371996
+2011,1.78033996
+2012,1.91214001
+2013,1.99785995
+2014,2.02242994
+2015,2.05700994
+2016,2.10033011
+2017,2.11602998
+2018,2.14057994
+2019,2.2446301
+2020,2.40666008
+2021,2.43260002
