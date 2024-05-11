@@ -1,0 +1,1 @@
+{"cmd": "\nfuck = fuck.dropna(axis=1)\nfuck.to_csv('./data.csv')\n", "cmd_opts": " --cell_id=XksM37Jz6c -s", "import_complete": 1, "terminal": "nvimterm"}
