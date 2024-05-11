@@ -1,1 +1,1 @@
-{"cmd": "\nw = (w1+w2)/2\nresult = (df*w).sum(axis=1)\nresult.to_csv('./data/综合指数/医疗综合指数.csv')", "cmd_opts": " --cell_id=iM7TCCSUXi -s", "import_complete": 1, "terminal": "nvimterm"}
+{"cmd": "\ndf.columns\n", "cmd_opts": " --cell_id=dfoYHetNEs -s", "import_complete": 1, "terminal": "nvimterm"}

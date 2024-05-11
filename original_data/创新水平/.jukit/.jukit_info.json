@@ -1,0 +1,1 @@
+{"cmd": "\nrk_mean = rk/9598077\n# rk_mean.to_csv(\"人口密度(人/平方千米).csv\", index=False)\nrk_mean.to_csv(\"../data/人口密度(人/平方千米).csv\")\n", "cmd_opts": " --cell_id=3rptICq8Js -s", "import_complete": 1, "terminal": "nvimterm"}

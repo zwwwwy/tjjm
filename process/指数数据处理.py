@@ -30,7 +30,7 @@ sum_zw = pd.DataFrame()
 sum_zw["时间"] = zw["时间"]
 sum_zw["文献量"] = zw_wx
 sum_zw["被引量"] = zw_by
-sum_zw.to_csv("./data/ai+人工智能知网指数.csv", index=False)
+sum_zw.to_csv("../data/ai+人工智能知网指数.csv", index=False)
 
 
 

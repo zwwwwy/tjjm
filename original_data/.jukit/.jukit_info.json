@@ -1,0 +1,1 @@
+{"cmd": "\nlast = df.groupby('year')['close'].last()\nlast = last[last.index>=2013]\nlast = last[last.index<=2022]\nlast.to_csv('../data/ai企业收盘价.csv')\n", "cmd_opts": " --cell_id=BtQpzwNITw -s", "import_complete": 1, "terminal": "nvimterm"}

@@ -6,19 +6,11 @@ from mtb.tools import prefer_settings
 prefer_settings()
 
 scaler = MinMaxScaler()
-df = pd.read_excel("./data/医疗指标.xlsx")
+df = pd.read_excel('./data/人工智能指标.xlsx')
 df = df.set_index("year")
-df = df.loc[2022:2013, :]
-
 for i in df.columns:
     df[i] = scaler.fit_transform(df[i].values.reshape(-1, 1))
 df = df.sort_index(ascending=True)
-
-# |%%--%%| <URpM8k8Gl3|BEPkLl1WLa>
-
-control = ["卫生总费用(亿元)", "政府卫生支出(亿元)", "人均卫生费用(元)"]
-df_control = df.loc[:, control]
-df = df.drop(control, axis=1)
 
 # |%%--%%| <BEPkLl1WLa|7BYS9wRI8J>
 
@@ -33,17 +25,23 @@ for i in df.columns:
 
 # |%%--%%| <7BYS9wRI8J|QvkdMJZ4sr>
 
-e = pd.Series(e_lst.values(), index=e_lst.keys())
+e = pd.Series(e_lst.values(),index=e_lst.keys())
 g = 1 - e
-w1 = g / g.sum()
+w1 = g/g.sum()
 w1
 
-# |%%--%%| <QvkdMJZ4sr|ZedYteWGJI>
+#|%%--%%| <QvkdMJZ4sr|ZedYteWGJI>
 
 # CRITIC
 corr = df.corr()
 std = df.std()
-r = 1 - corr
+r = 1-corr
 r = r.sum()
-c = std * r
-w2 = c / c.sum()
+c = std*r
+w2 = c/c.sum()
+#|%%--%%| <ZedYteWGJI|iM7TCCSUXi>
+
+w = (w1+w2)/2
+result = (df*w).sum(axis=1)
+result.to_csv('./data/综合指数/人工智能综合指数.csv')
+print("完成")

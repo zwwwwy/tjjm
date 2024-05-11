@@ -1,1 +1,1 @@
-{"cmd": "\ndiff_df.to_csv(\"../data/人均可支配收入.csv\", index=False)\n", "cmd_opts": " --cell_id=uufxPXwtCc -s", "import_complete": 1, "terminal": "nvimterm"}
+{"cmd": "\ngroup = df['zc'].groupby(df['year'])\nresult = group.sum()\nresult.to_csv(\"../data/综合指数/人工智能企业资产合计.csv\")\n", "cmd_opts": " --cell_id=5UMByDlkZo -s", "import_complete": 1, "terminal": "nvimterm"}

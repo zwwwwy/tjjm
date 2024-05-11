@@ -1,0 +1,17 @@
+library(dplyr)
+library(tidyverse)
+library(caret)
+library(glmnet)
+
+y <- read.csv("./data/综合指数/医疗综合指数.csv")
+x <- read.csv("./data/综合指数/人工智能综合指数.csv")
+control <- read.csv("./data/综合指数/控制变量.csv")
+data <- data.frame(x = x[, 2], y = y[, 2], control = control[, -1])
+data <- rename(data, c("人工智能综合指数" = "x", "医疗综合指数" = "y"))
+result <- lm("医疗综合指数 ~ .", data = data)
+print(summary(result))
+data2 <- log(data + 0.01)
+result2 <- lm("医疗综合指数 ~ .", data = data2)
+print(summary(result2))
+
+result3 <- glmnet()
