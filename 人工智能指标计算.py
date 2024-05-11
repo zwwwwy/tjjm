@@ -44,4 +44,5 @@ w2 = c/c.sum()
 w = (w1+w2)/2
 result = (df*w).sum(axis=1)
 result.to_csv('./data/综合指数/人工智能综合指数.csv')
+w.to_csv("./data/综合指数/人工智能指标权重.csv")
 print("完成")

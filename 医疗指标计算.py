@@ -47,3 +47,13 @@ r = 1 - corr
 r = r.sum()
 c = std * r
 w2 = c / c.sum()
+#|%%--%%| <ZedYteWGJI|D4vYyBouAq>
+
+w = (w1+w2)/2
+result = (df*w).sum(axis=1)
+result.to_csv('./data/综合指数/医疗综合指数.csv')
+w.to_csv("./data/综合指数/医疗指标权重.csv")
+print("完成")
+
+
+
