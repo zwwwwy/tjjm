@@ -1,0 +1,1 @@
+{"cmd": "\ndf2.describe().to_excel('./医疗指标描述.xlsx')\ndf3.describe().to_excel('./人工智能指标描述.xlsx')\n", "cmd_opts": " --cell_id=Mz4OuIFcJ3 -s", "import_complete": 1, "terminal": "nvimterm"}
