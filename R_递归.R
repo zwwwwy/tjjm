@@ -1,0 +1,33 @@
+library(dplyr)
+library(readxl)
+library(caret)
+library(glmnet)
+library(haven)
+library(lmtest)
+library(sandwich)
+library(ivreg)
+library(ridge)
+library(plyr)
+
+y <- read.csv("./data/综合指数/医疗综合指数.csv")
+x <- read.csv("./data/综合指数/人工智能综合指数.csv")
+a <- list.files("./控制变量结果")
+for (i in a) {
+  control <- read.csv(paste0("./控制变量结果/", i))
+  data <- data.frame(x = x[, 2], y = y[, 2], control = control[, -1])
+  data <- rename(data, c("x" = "人工智能综合指数", "y" = "医疗综合指数"))
+  result <- lm("医疗综合指数 ~ .", data = data)
+  summary(result)
+  data2 <- log(data + 0.001)
+  result2 <- lm("医疗综合指数 ~ .", data = data2)
+  print(summary(result2))
+  print(i)
+}
+
+
+control <- read.csv(paste0("./控制变量结果/test.csv"))
+data <- data.frame(x = x[, 2], y = y[, 2], control = control[, -1])
+data <- rename(data, c("x" = "人工智能综合指数", "y" = "医疗综合指数"))
+data2 <- log(data + 0.001)
+idge.result2 <- linearRidge("医疗综合指数 ~ .", data2)
+summary(idge.result2)

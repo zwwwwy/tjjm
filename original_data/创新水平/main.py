@@ -5,10 +5,6 @@ prefer_settings()
 zls = pd.read_csv("./中国_有效量_发明专利_国内.csv")
 rk = pd.read_csv("./中国_总人口.csv")
 
-# |%%--%%| <HFpMhPKASK|KFJNoVkmMP>
-
-zls
-
 # |%%--%%| <KFJNoVkmMP|ED52Oo3BHe>
 
 zls = zls.rename(columns={"指标名称": "year"})

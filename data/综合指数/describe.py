@@ -1,6 +1,23 @@
 import pandas as pd
-df1 = pd.read_csv("./人工智能综合指数.csv")
-df2 = pd.read_csv('./医疗综合指数.csv')
-df3 = pd.read_csv('./控制变量.csv')
-df = pd.concat([df1,df2,df3],axis=1)
-print(df)
+
+df = pd.read_excel('./数据综合.xlsx')
+df.describe().to_excel('./数据综合描述.xlsx')
+#|%%--%%| <6RDHTPVsLp|NJpYUla7YW>
+
+df2 = pd.read_excel('../医疗指标.xlsx')
+df2 = df2[df2["year"]<=2022]
+df2 = df2[df2["year"]>=2013]
+df2
+
+#|%%--%%| <NJpYUla7YW|tXpLJ7BR61>
+
+df3 = pd.read_excel('../人工智能指标.xlsx')
+df3 = df3[df3["year"]<=2022]
+df3 = df3[df3["year"]>=2013]
+
+
+#|%%--%%| <tXpLJ7BR61|Mz4OuIFcJ3>
+
+df2.describe().to_excel('./医疗指标描述.xlsx')
+df3.describe().to_excel('./人工智能指标描述.xlsx')
+
