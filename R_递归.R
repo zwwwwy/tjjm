@@ -20,8 +20,12 @@ for (i in a) {
   summary(result)
   data2 <- log(data + 0.001)
   result2 <- lm("医疗综合指数 ~ .", data = data2)
-  print(summary(result2))
-  print(i)
+  if (any(is.na(coef(result2)))) {
+    next
+  } else {
+    print(summary(result2))
+    print(i)
+  }
 }
 
 

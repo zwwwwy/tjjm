@@ -7,6 +7,7 @@ library(lmtest)
 library(sandwich)
 library(ivreg)
 library(ridge)
+library(corrplot)
 
 y <- read.csv("./data/综合指数/医疗综合指数.csv")
 x <- read.csv("./data/综合指数/人工智能综合指数.csv")
@@ -27,6 +28,11 @@ coeftest(result, vcov = vcovHC, type = "HC1")
 data3 <- data[-1, ]
 data3["工具变量"] <- x[-10, 2]
 
+# 相关系数图
+corr <- cor(data2)
+pdf("./报告结果/相关系数图.pdf", width = 8, height = 6)
+corrplot.mixed(corr)
+dev.off()
 
 # 第一阶段回归
 iv1.data <- data3[, -2]
@@ -58,6 +64,21 @@ coef(ridge.result)
 ridge.result2 <- linearRidge("医疗综合指数 ~ .", data2)
 # write.csv(summary(ridge.result2)[6]$summaries$summary3$coefficients, "./报告结果/岭回归结果.csv")
 summary(ridge.result2)
+
+# 岭回归图像
+# lambdas <- seq(0.1, 3, length.out = 200)
+X <- data2[, -2]
+Y <- data2[, 2]
+set.seed(42)
+ridge.model <- cv.glmnet(X, Y, alpha = 0)
+pdf("./报告结果/岭回归mse-lambda.pdf", width = 8, height = 6)
+plot(ridge.model)
+dev.off()
+pdf("./报告结果/岭回归coff-lambda.pdf", width = 8, height = 6)
+plot(ridge.model$glmnet, "lambda", label = TRUE)
+dev.off()
+ridge.model$lambda.min
+
 
 pred <- predict(ridge.result2, data2[, -2])
 real <- data2[, 2]

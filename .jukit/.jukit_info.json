@@ -1,1 +1,1 @@
-{"cmd": "\nmtb.regression_report(df['pred'],df['real'])\n", "cmd_opts": " --cell_id=bGYQUbRkuL -s", "import_complete": 1, "terminal": "nvimterm"}
+{"cmd": "\n# CRITIC\ncorr = df.corr()\nstd = df.std()\nr = 1 - corr\nr = r.sum()\nc = std * r\nw2 = c / c.sum()", "cmd_opts": " --cell_id=cloiIR2M8Y -s", "import_complete": 1, "terminal": "nvimterm"}

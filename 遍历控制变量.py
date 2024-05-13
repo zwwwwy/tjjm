@@ -23,7 +23,7 @@ result = result[1:]
 
 k = 0
 for i in result:
-    if i.shape[1] <= 4:
+    if i.shape[1] <= 5:
         continue
     k += 1
     i.to_csv(f"./控制变量结果/{k}.csv", index=False)
