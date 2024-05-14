@@ -23,5 +23,13 @@ df3.describe().to_excel('./人工智能指标描述.xlsx')
 
 #|%%--%%| <Mz4OuIFcJ3|w80lNQprwU>
 
+x = pd.read_csv('./人工智能综合指数.csv')
+y = pd.read_csv('./医疗综合指数.csv')
 
+x.rename(columns={'0':'x'},inplace=True)
+x['y'] = y['0'].values
+
+#|%%--%%| <w80lNQprwU|NrWNp07SlK>
+
+x.describe().to_excel('./综合指数描述.xlsx')
 

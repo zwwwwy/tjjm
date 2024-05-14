@@ -145,3 +145,4 @@ w.to_csv("./data/综合指数/医疗指标权重.csv")
 print("完成")
 #|%%--%%| <D4vYyBouAq|xzoAR6uJes>
 
+result

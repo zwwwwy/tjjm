@@ -1,1 +1,1 @@
-{"cmd": "\n# CRITIC\ncorr = df.corr()\nstd = df.std()\nr = 1 - corr\nr = r.sum()\nc = std * r\nw2 = c / c.sum()", "cmd_opts": " --cell_id=cloiIR2M8Y -s", "import_complete": 1, "terminal": "nvimterm"}
+{"cmd": "\ndf\n", "cmd_opts": " --cell_id=Rx6cK2fWE2 -s", "import_complete": 1, "terminal": "nvimterm"}

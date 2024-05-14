@@ -11,6 +11,7 @@ library(ridge)
 y <- read.csv("./data/综合指数/医疗综合指数.csv")
 x <- read.csv("./data/综合指数/人工智能综合指数.csv")
 control <- read_excel("./data/综合指数/控制变量.xlsx")
+control <- read.csv("./控制变量结果/894.csv")
 data <- data.frame(x = x[, 2], y = y[, 2], control = control[, -1])
 data <- rename(data, c("人工智能综合指数" = "x", "医疗综合指数" = "y"))
 result <- lm("医疗综合指数 ~ .", data = data)
@@ -22,3 +23,8 @@ print(summary(result2))
 
 idge.result2 <- linearRidge("医疗综合指数 ~ .", data2)
 summary(idge.result2)
+if (!any(is.na(summary(result2)$cofficients))) {
+    print("有NA")
+}
+is.na(summary(result2)[4][1])
+any(is.na(coef(result2)))

@@ -8,17 +8,19 @@ library(sandwich)
 library(ivreg)
 library(ridge)
 library(corrplot)
+library(car)
 
 y <- read.csv("./data/综合指数/医疗综合指数.csv")
 x <- read.csv("./data/综合指数/人工智能综合指数.csv")
-control <- read.csv("./控制变量结果/315.csv")
+control <- read.csv("./控制变量结果/35.csv")
 data <- data.frame(x = x[, 2], y = y[, 2], control = control[, -1])
-data <- rename(data, c("人工智能综合指数" = "x", "医疗综合指数" = "y"))
-result <- lm("医疗综合指数 ~ .", data = data)
+data <- rename(data, c("Eco" = "control.人均GDP增长率", "Gover" = "control.政府卫生支出占比", "Popu" = "control.人口自然增长率加一", "Area" = "control.变异系数", "AI" = "x", "HM" = "y"))
+result <- lm("HM ~ .", data = data)
 summary(result)
 data2 <- log(data + 0.001)
-result2 <- lm("医疗综合指数 ~ .", data = data2)
+result2 <- lm("HM ~ .", data = data2)
 print(summary(result2))
+vif(result2)
 
 write.csv(summary(result2)$coefficients, "./报告结果/最小二乘回归结果.csv")
 
@@ -30,27 +32,29 @@ data3["工具变量"] <- x[-10, 2]
 
 # 相关系数图
 corr <- cor(data2)
+write.csv(corr, "./报告结果/相关系数.csv")
 pdf("./报告结果/相关系数图.pdf", width = 8, height = 6)
-corrplot.mixed(corr)
+corrplot.mixed(corr, upper = "circle", lower = "number", tl.col = "black", tl.cex = 0.8, tl.srt = 45, tl.pos = "lt")
+
 dev.off()
 
 # 第一阶段回归
 iv1.data <- data3[, -2]
 # iv1.data <- iv1.data[, c(1, 7)]
-iv1.result <- lm("人工智能综合指数 ~ .", data = iv1.data)
+iv1.result <- lm("AI ~ .", data = iv1.data)
 summary(iv1.result)
 iv1.x <- iv1.data[, -1]
 iv1.d.hat <- predict(iv1.result, iv1.x, se.fit = TRUE)
 # 第二阶段回归
 
 iv2.data <- data3[, -8]
-iv2.data[, 1] <- iv1.d.hat
+iv2.data[, 1] <- iv1.d.hat$fit
 # iv2.data <- iv2.data[, c(1, 2)]
-iv2.result <- lm("医疗综合指数 ~ .", data = iv2.data)
+iv2.result <- lm(HM ~ ., data = iv2.data[,-7])
 summary(iv2.result)
-
+data3
 # 两阶段回归
-model <- ivreg("医疗综合指数 ~ 人工智能综合指数 | 工具变量", data = data3)
+model <- ivreg(HM ~ Eco+Popu+Gover+Area|AI|工具变量, data = data3)
 summary(model)
 
 # 岭回归
@@ -61,9 +65,9 @@ ridge.result <- glmnet(data[, -2], data[, 2], alpha = 0, lambda = best.lambda)
 summary(ridge.result)
 coef(ridge.result)
 
-ridge.result2 <- linearRidge("医疗综合指数 ~ .", data2)
-# write.csv(summary(ridge.result2)[6]$summaries$summary3$coefficients, "./报告结果/岭回归结果.csv")
-summary(ridge.result2)
+ridge.result2 <- linearRidge("HM ~ .", data2)
+write.csv(summary(ridge.result2)[6]$summaries$summary3$coefficients, "./报告结果/岭回归结果.csv")
+print(summary(ridge.result2))
 
 # 岭回归图像
 # lambdas <- seq(0.1, 3, length.out = 200)
