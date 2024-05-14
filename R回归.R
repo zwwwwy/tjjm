@@ -9,16 +9,17 @@ library(ivreg)
 library(ridge)
 library(corrplot)
 library(car)
+library(cowplot)
 
 y <- read.csv("./data/综合指数/医疗综合指数.csv")
 x <- read.csv("./data/综合指数/人工智能综合指数.csv")
 control <- read.csv("./控制变量结果/35.csv")
 data <- data.frame(x = x[, 2], y = y[, 2], control = control[, -1])
-data <- rename(data, c("Eco" = "control.人均GDP增长率", "Gover" = "control.政府卫生支出占比", "Popu" = "control.人口自然增长率加一", "Area" = "control.变异系数", "AI" = "x", "HM" = "y"))
-result <- lm("HM ~ .", data = data)
+data <- rename(data, c("Eco" = "control.人均GDP增长率", "Gover" = "control.政府卫生支出占比", "Popu" = "control.人口自然增长率加一", "Area" = "control.变异系数", "Index_AI" = "x", "Index_HM" = "y"))
+result <- lm("Index_HM ~ .", data = data)
 summary(result)
 data2 <- log(data + 0.001)
-result2 <- lm("HM ~ .", data = data2)
+result2 <- lm("Index_HM ~ Index_AI", data = data2)
 print(summary(result2))
 vif(result2)
 
@@ -75,16 +76,23 @@ X <- data2[, -2]
 Y <- data2[, 2]
 set.seed(42)
 ridge.model <- cv.glmnet(X, Y, alpha = 0)
-pdf("./报告结果/岭回归mse-lambda.pdf", width = 8, height = 6)
-plot(ridge.model)
-dev.off()
-pdf("./报告结果/岭回归coff-lambda.pdf", width = 8, height = 6)
-plot(ridge.model$glmnet, "lambda", label = TRUE)
-dev.off()
+#pdf("./报告结果/岭回归mse-lambda.pdf", width = 8, height = 6)
+par(mfrow=(c(1,2)))
+p_1 <- plot(ridge.model)
+#dev.off()
+#pdf("./报告结果/岭回归coff-lambda.pdf", width = 8, height = 6)
+p_2 <- plot(ridge.model$glmnet, "lambda", label = TRUE)
+#dev.off()
 ridge.model$lambda.min
-
 
 pred <- predict(ridge.result2, data2[, -2])
 real <- data2[, 2]
 r2 <- data.frame(pred = pred, real = real)
 write.csv(r2, "r2.csv")
+
+# PCA结果回归
+x_pca <- read.csv("./data/综合指数/PCA_人工智能综合指数.csv")
+PCA_data <- data
+PCA_data[,"AI"] <- x_pca[,"f"]
+PCA_data <- log(PCA_data + 0.001)
+PCA_result <- lm("HM ~ .", data = PCA_data)
