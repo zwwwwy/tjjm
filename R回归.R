@@ -51,11 +51,11 @@ iv1.d.hat <- predict(iv1.result, iv1.x, se.fit = TRUE)
 iv2.data <- data3[, -8]
 iv2.data[, 1] <- iv1.d.hat$fit
 # iv2.data <- iv2.data[, c(1, 2)]
-iv2.result <- lm(HM ~ ., data = iv2.data[,-7])
+iv2.result <- lm(HM ~ ., data = iv2.data[, -7])
 summary(iv2.result)
 data3
 # 两阶段回归
-model <- ivreg(HM ~ Eco+Popu+Gover+Area|AI|工具变量, data = data3)
+model <- ivreg(HM ~ Eco + Popu + Gover + Area | AI | 工具变量, data = data3)
 summary(model)
 
 # 岭回归
@@ -66,7 +66,7 @@ ridge.result <- glmnet(data[, -2], data[, 2], alpha = 0, lambda = best.lambda)
 summary(ridge.result)
 coef(ridge.result)
 
-ridge.result2 <- linearRidge("HM ~ .", data2)
+ridge.result2 <- linearRidge("Index_HM ~ .", data2)
 write.csv(summary(ridge.result2)[6]$summaries$summary3$coefficients, "./报告结果/岭回归结果.csv")
 print(summary(ridge.result2))
 
@@ -76,14 +76,36 @@ X <- data2[, -2]
 Y <- data2[, 2]
 set.seed(42)
 ridge.model <- cv.glmnet(X, Y, alpha = 0)
-#pdf("./报告结果/岭回归mse-lambda.pdf", width = 8, height = 6)
-par(mfrow=(c(1,2)))
+# pdf("./报告结果/岭回归mse-lambda.pdf", width = 8, height = 6)
+par(mfrow = (c(1, 2)))
 p_1 <- plot(ridge.model)
-#dev.off()
-#pdf("./报告结果/岭回归coff-lambda.pdf", width = 8, height = 6)
+# dev.off()
+# pdf("./报告结果/岭回归coff-lambda.pdf", width = 8, height = 6)
 p_2 <- plot(ridge.model$glmnet, "lambda", label = TRUE)
-#dev.off()
+# dev.off()
 ridge.model$lambda.min
+ridge.model$lambda.1se
+coef(ridge.model, s = "lambda.min")
+
+ridge_data <- data.frame(
+    log_lambda = log(ridge.model$lambda),
+    cvm = ridge.model$cvm,
+    cvup = ridge.model$cvup,
+    cvlo = ridge.model$cvlo
+)
+
+ggplot(ridge_data, aes(x = log_lambda, y = cvm)) +
+    geom_point() +
+    geom_errorbar(aes(ymin = cvlo, ymax = cvup), width = 0.2) +
+    geom_vline(xintercept = log(ridge.model$lambda.min), linetype = "dashed", color = "red") +
+    geom_vline(xintercept = log(ridge.model$lambda.1se), linetype = "dashed", color = "blue") +
+    labs(
+        title = "Cross-Validation Error",
+        x = "log(lambda)",
+        y = "CVM"
+    ) +
+    theme_minimal()
+
 
 pred <- predict(ridge.result2, data2[, -2])
 real <- data2[, 2]
@@ -93,6 +115,6 @@ write.csv(r2, "r2.csv")
 # PCA结果回归
 x_pca <- read.csv("./data/综合指数/PCA_人工智能综合指数.csv")
 PCA_data <- data
-PCA_data[,"AI"] <- x_pca[,"f"]
+PCA_data[, "AI"] <- x_pca[, "f"]
 PCA_data <- log(PCA_data + 0.001)
 PCA_result <- lm("HM ~ .", data = PCA_data)
